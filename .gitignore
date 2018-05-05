@@ -30,3 +30,10 @@
 *.exe
 *.out
 *.app
+
+**/xcuserdata
+**/project.xcworkspace
+/config/LastScenario.txt
+
+/config/log/**
+**/.ipynb_checkpoints
