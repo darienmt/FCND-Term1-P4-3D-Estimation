@@ -28,7 +28,9 @@ Commands += SetTitle(1,"Estimated Attitude Error")
 Commands += Plot(1,Quad.Est.E.Yaw,"Yaw")
 Commands += Plot(1,Quad.Est.E.Pitch,"Pitch")
 Commands += Plot(1,Quad.Est.E.Roll,"Roll")
+Commands += Plot(1,Quad.Est.E.MaxEuler,"MaxEuler")
 Commands += AddGraph1.WindowThreshold(Quad.Est.E.MaxEuler, .1, 3)
+Commands += AddGraph1.LogToFile
 
 Commands += SetTitle(2,"Estimated vs Actual Attitude")
 Commands += Plot(2,Quad.Roll,"true roll")
@@ -37,3 +39,4 @@ Commands += Plot(2,Quad.Pitch,"true pitch")
 Commands += Plot(2,Quad.Est.Pitch,"est pitch")
 Commands += Plot(2,Quad.Yaw,"true yaw")
 Commands += Plot(2,Quad.Est.Yaw,"est yaw")
+Commands += AddGraph2.LogToFile

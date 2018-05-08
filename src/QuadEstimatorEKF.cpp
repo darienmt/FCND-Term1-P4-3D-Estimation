@@ -98,18 +98,18 @@ void QuadEstimatorEKF::UpdateFromIMU(V3F accel, V3F gyro)
 //  ekfState(6) = ekfState(6) + dtIMU * gyro.z;  // yaw
   float phi = rollEst;
   float theta = pitchEst;
-  
+
   Mat3x3F rot = Mat3x3F::Zeros();
   rot(0,0) = 1;
   rot(0,1) = sin(phi) * tan(theta);
   rot(0,2) = cos(phi) * tan(theta);
   rot(1,1) = cos(phi);
-  rot(1,2) = tan(phi);
+  rot(1,2) = -sin(phi);
   rot(2,1) = sin(phi) / cos(theta);
   rot(2,2) = cos(phi) / cos(theta);
-  
+
   V3F angle_dot = rot * gyro;
-  
+
   float predictedRoll = rollEst + dtIMU * angle_dot.x;
   float predictedPitch = pitchEst + dtIMU * angle_dot.y;
   ekfState(6) = ekfState(6) + dtIMU * angle_dot.z;
