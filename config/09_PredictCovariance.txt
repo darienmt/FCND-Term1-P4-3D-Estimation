@@ -46,6 +46,7 @@ Commands += AddGraph1.Quad9.Est.E.X,NoLegend
 Commands += AddGraph1.Quad10.Est.E.X,NoLegend
 Commands += Plot(1,Quad1.Est.S.X,"est x std",bold,1,1,1)
 Commands += Plot(1,Quad1.Est.S.X,NoLegend,bold,force,negate,1,1,1)
+Commands += AddGraph1.LogToFile
 
 Commands += SetTitle(2,"Estimated VX (10 runs) and VX Sigma")
 Commands += AddGraph2.Quad1.Est.E.VX,NoLegend
@@ -60,6 +61,7 @@ Commands += AddGraph2.Quad9.Est.E.VX,NoLegend
 Commands += AddGraph2.Quad10.Est.E.VX,NoLegend
 Commands += Plot(2,Quad1.Est.S.VX,"est vx std",bold,1,1,1)
 Commands += Plot(2,Quad1.Est.S.VX,NoLegend,bold,force,negate,1,1,1)
+Commands += AddGraph2.LogToFile
 
 #
 [Quad1 : Quad]
