@@ -90,3 +90,50 @@ There the dotted line is growing showing sigma growing overtime due to the predi
 ![Scenario 3 - Part 2](./images/scenario3-part2.gif)
 
 This video is [scenario3-part2.mov](./videos/scenario3-part2.mov).
+
+## Step 4: Magnetometer Update
+
+In this step, we need to update the state with the magnetometer measurement. Without code modifications, we have this data:
+
+![Scenario 4 - No-Code](./images/scenario4-no-code.png)
+
+In order to implement the update, we need to use the equations from section `7.3.2 Magnetometer` from the [Estimation for Quadrotors](https://www.overleaf.com/read/vymfngphcccj#/54894644/) paper. After it is implemented, we received this data:
+
+![Scenario 4 - Code](./images/scenario4-code.png)
+
+You can see there the yaw error decrease and the sigma remained stable. Here is a scenario video:
+
+![Scenario 4 - Magnetometer update](./images/scenario4.gif)
+
+This video is [scenario4.mov](./videos/scenario4.mov). When the scenario is passing the test, you should see this line on the standard output:
+
+```
+PASS: ABS(Quad.Est.E.Yaw) was less than 0.120000 for at least 10.000000 seconds
+PASS: ABS(Quad.Est.E.Yaw-0.000000) was less than Quad.Est.S.Yaw for 67% of the time
+```
+
+## Step 5: Closed Loop + GPS Update
+
+The last step before to finish the EKF implementation: GPS Update. After eliminating the ideal estimator of the code without any code modification, we have this data:
+
+![Scenario 5 - GPS Update - No-Code](./images/scenario5-no-code.png)
+
+The drone goes while from time to time as well:
+
+![Scenario 5 Wild](./images/scenario5-wild.gif)
+
+This video is [scenario5-wild.mov](./videos/scenario4-wild.mov).
+
+To implement this update, we need to use the equations from section `7.3.1 GPS` from the [Estimation for Quadrotors](https://www.overleaf.com/read/vymfngphcccj#/54894644/) paper. After it is implemented, we received this data:
+
+![Scenario 5 - GPS Update - Code](./images/scenario5-code.png)
+
+We can see there the position error and sigma decreased. Here is a scenario video:
+
+![Scenario 5 - GPS Update](./images/scenario5.gif)
+
+This video is [scenario5.mov](./videos/scenario5.mov). When the scenario is passing the test, you should see this line on the standard output:
+
+```
+PASS: ABS(Quad.Est.E.Pos) was less than 1.000000 for at least 20.000000 seconds
+```
