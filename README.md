@@ -20,9 +20,9 @@ Nothing extra needs to install but the IDE is necessary to compile the code. In 
 
 The project consists in six scenarios where most of the missing parts of the EKF needs to be implemented and tested.
 
-## Scenario 1: Sensor noise
+## Step 1: Sensor noise
 
-It is scenario 1 here, but this code contains all the code from the control project as well; so, it is scenario `06_SensorNoise`. The simulator will generate two files with GPS and IMU measurements. The task is to process those files and calculate the standard deviation(sigma) for those sensors.
+It is step 1 here, but this code contains all the code from the control project as well; so, it is scenario `06_SensorNoise`. The simulator will generate two files with GPS and IMU measurements. The task is to process those files and calculate the standard deviation(sigma) for those sensors.
 
 ![Scenario 1 - Sensor noise](./images/scenario1.gif)
 
@@ -35,3 +35,28 @@ PASS: ABS(Quad.IMU.AX-0.000000) was less than MeasuredStdDev_AccelXY for 69% of 
 ```
 
 The notebook used to calculate this values is [Step 1 Sensor Noise](./visualizations/Step%201%20Sensor%20Noise.ipynb).
+
+## Step 2: Attitude Estimation
+
+In this step, we need to include information from the IMU to the state. There is a few code provided by us there. The only thing we need to do is to integrate `pqr` from the gyroscope into the estimated pitch and roll. The implementation provided linear. The following figure illustrate the data we get with that implementation:
+
+![Scenario 2 - Linear integration](./images/scenario2-linear.png)
+
+We need to implement a non-linear one to get better results. First, we need to find the roll, pith and yaw derivates using the following equation from the control lectures:
+
+![Step 2 equations](./images/step2-equations.png)
+
+Once we have the derivates we can multiply them by `dt` to approximate the integral. The following is a more detail graph after the non-linear integration:
+
+![Scenario 2 - non-linear integration](./images/scenario2-non-linear.png)
+
+And here is a video of the scenario:
+
+![Scenario 2 - Attitude Estimation](./images/scenario2.gif)
+
+This video is [scenario2.mov](./videos/scenario2.mov).
+When the scenario is passing the test, you should see this line on the standard output:
+
+```
+PASS: ABS(Quad.Est.E.MaxEuler) was less than 0.100000 for at least 3.000000 seconds
+```
