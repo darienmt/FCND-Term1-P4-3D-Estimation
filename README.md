@@ -60,3 +60,33 @@ When the scenario is passing the test, you should see this line on the standard 
 ```
 PASS: ABS(Quad.Est.E.MaxEuler) was less than 0.100000 for at least 3.000000 seconds
 ```
+
+## Step 3: Prediction Step
+
+This step has two parts. In the first part we predict the state based on the acceleration measurement. Without modifying the code, we have this data:
+
+![Scenario 3 - Part 1 - No-Code](./images/scenario3-part-1-no-code.png)
+
+After implementing the first part, you can see the estimation drift:
+
+![Scenario 3 - Part 1 - Code](./images/scenario3-part-1-code.png)
+
+This is a scenario video:
+
+![Scenario 3 - Part 1](./images/scenario3-part1.gif)
+
+This video is [scenario3-part1.mov](./videos/scenario3-part1.mov).
+
+The second part we update the covariance matrix and finish the EKF state using the equations on the [Estimation for Quadrotors](https://www.overleaf.com/read/vymfngphcccj#/54894644/) paper provided by Udacity. The important section is is `7.2 Transition Model`. The matrixes are big, but it is a matter of be really careful when creating them in the code. Without modifying the code we have this data:
+
+![Scenario 3 - Part 2 - No-code](./images/scenario3-part-2-no-code.png)
+
+The red-dotted line represent the sigma, and it is not changing over time. After the update of the covariance matrix:
+
+![Scenario 3 - Part 2 - Code](./images/scenario3-part-2-code.png)
+
+There the dotted line is growing showing sigma growing overtime due to the prediction step. Here is a scenario video:
+
+![Scenario 3 - Part 2](./images/scenario3-part2.gif)
+
+This video is [scenario3-part2.mov](./videos/scenario3-part2.mov).
