@@ -31,6 +31,7 @@ Commands += AddGraph1.LogToFile
 
 Commands += SetTitle(2,"Yaw Error")
 Commands += Plot(2,Quad.Est.E.Yaw,"yaw error", 1, 1, 0)
+Commands += Plot(2,Quad.Est.S.Yaw,"yaw std", 1, 1, 1)
 Commands += AddGraph2.WindowThreshold(Quad.Est.E.Yaw, .12 ,10)
 Commands += AddGraph2.SigmaThreshold(Quad.Est.E.Yaw, 0, Quad.Est.S.Yaw,55,85,2)
 Commands += AddGraph2.SetYAxis(-0.15,0.15)
