@@ -118,7 +118,7 @@ The last step before to finish the EKF implementation: GPS Update. After elimina
 
 ![Scenario 5 - GPS Update - No-Code](./images/scenario5-no-code.png)
 
-The drone goes while from time to time as well:
+The drone goes wild from time to time as well:
 
 ![Scenario 5 Wild](./images/scenario5-wild.gif)
 
